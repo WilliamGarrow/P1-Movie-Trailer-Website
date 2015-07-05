@@ -1,0 +1,254 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P1 Movie Trailer Website Assignment // William Garrow</title>
+
+    <!-- Bootstrap 3 -->
+    <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css"> -->
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+    <!-- LOCAL Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+    <!-- Fasten Your SEAT BELT!!!  -->
+    <link rel="stylesheet" href="assets/css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/prettyPhoto.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css" rel="stylesheet">
+    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script rel="stylesheet" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script rel="stylesheet" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+<style type="text/css" media="screen">
+        body {
+            color: #2c3e50;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile h3 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            color: #2c3e50;
+            cursor: pointer;
+        }
+        .movie-tile h3 {
+            font-size: 18px;
+        }
+        .movie-tile p {
+            font-size: 11px;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="http://williamgarrow.com">P1 Movie Trailer Website Assignment // William Garrow</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Start Features ================================================== -->
+        <section id="features" class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Title -->
+                        <div class="overview animate" data-animate="flipInX">
+                            <h1><strong>Udacity's Assignment.</strong> My execution.</h1> <h3 style="text-transform:lowercase;">(Sort of like Python On Front-End Steroids).</h3>
+                            <p class="lead"><strong>Project Description.</strong> In this project you will build a Movie Trailer Website where users can see your favorite movies and watch the trailers. You'll be writing server side code to store a list of movie titles, box art, poster images, and movie trailer URLs. The data will then be expressed on the web page and allow users to review the movies and watch the trailers. (Here's a hint: The data for the movies will be stored using Classes!)</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8"></div>
+                            <div class="col-md-4">
+                                <blockquote>
+                                <p>Sometimes people think I'm wearing a wig when I'm not wearing a wig, and then sometimes they think I'm not wearing a wig when I am wearing a wig.<br />  -- Nicolas Cage</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================
+        End Features -->
+
+        <!-- Start Movie Gallery ================================================== -->
+        <section id="gallery" class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="overview animate" data-animate="flipInY">
+                            <h2><strong>What could be better than Nickelback and Coca-Cola you ask?</strong><br /><em>That Funky little monkey Coca-Cola rollercoaster</em> Nick Cage.</h2>
+                            <p class="lead">Nicolas Cage is arguably either the worst or the best actor depending on who you ask. Here in one glorious place on the interwebs are the top 10 of either the greatest or the most terrible 'Cagey' flicks of all time. Results are curated based on the film, the acting, but more importantly the Nic's hairdo.</p>
+                                </div>
+                    </div>
+                    <div class="row">
+                          
+<div class="col-md-3 col-sm-4 col-xs-12 movie-tile text-center" data-trailer-youtube-id="e_b2QVAVRpc" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/ea/Bangkok_dangerous_2008_poster.jpg/220px-Bangkok_dangerous_2008_poster.jpg">
+    <h3>Bangkok Dangerous (2008)</h3>
+    <p>Description: As a hired assassin, Joe (Nicolas Cage) is the best in the business, but the years of stone-cold murder have taken their toll. Joe's plan to make this current assignment in Bangkok his last takes a wild turn when he violates one of....<br />Running Time: 100 minutes.</p>
+</div>
+
+<div class="col-md-3 col-sm-4 col-xs-12 movie-tile text-center" data-trailer-youtube-id="PE6QUf1b-Xw" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b0/Season_of_the_Witch.jpg/220px-Season_of_the_Witch.jpg">
+    <h3>Season Of The Witch (2011)</h3>
+    <p>Description: In Villach in the 13th century, three women are accused of witchcraft by a priest (Nick Sidi). While one claims to be a witch out of persuasion from the church, one doesn't deny it and curses the priest....<br />Running Time: 98 minutes.</p>
+</div>
+
+<div class="col-md-3 col-sm-4 col-xs-12 movie-tile text-center" data-trailer-youtube-id="xzewDVXmSII" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8b/SnakeEyesPoster.jpg/220px-SnakeEyesPoster.jpg">
+    <h3>Snake Eyes (1998)</h3>
+    <p>Description: Cage is an Atlantic City cop who, along with an arena full of spectators at a championship prize-fight, is eyewitness to a political assassination. Determined to quickly solve the crime, he immediately launches an intensive investigation....<br />Running Time: 98 minutes.</p>
+</div>
+
+<div class="col-md-3 col-sm-4 col-xs-12 movie-tile text-center" data-trailer-youtube-id="qYsyABPvtU0" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Zandalee.jpg/220px-Zandalee.jpg">
+    <h3>Zandalee (1991)</h3>
+    <p>Description: Johnny, an artist painter by trade, has been working for Thierry's business to help support his paintings. His only religion is self-gratification. Johnny also sells and mules cocaine for a local drug dealer as another source of income for....<br />Running Time: 104 minutes.</p>
+</div>
+
+<div class="col-md-3 col-sm-4 col-xs-12 movie-tile text-center" data-trailer-youtube-id="E1kbITvaV7Y" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/8d/Deadfall-movie.jpg/220px-Deadfall-movie.jpg">
+    <h3>Deadfall (1993)</h3>
+    <p>Description: Lou is working on a con worth more than $2 million in diamonds. Eddie (Nicolas Cage), Lou's right-hand man, sees Joe as a serious threat, and a rival for his girlfriend - the sexy Diane (Sarah Trigger). Diane seduces Joe into the love....<br />Running Time: 98 minutes.</p>
+</div>
+
+<div class="col-md-3 col-sm-4 col-xs-12 movie-tile text-center" data-trailer-youtube-id="frHmNfqdlnE" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Theboyinblue.jpg/220px-Theboyinblue.jpg">
+    <h3>The Boy In Blue (1986)</h3>
+    <p>Description: A wild, uncontrollable youth, Ned Hanlan is adopted by a gambler named Bill, who promotes the boy on the sculling circuit for his own monetary gain. A businessman named Knox assumes control of Hanlan's career, but when Ned discovers just....<br />Running Time: 93 minutes.</p>
+</div>
+
+<div class="col-md-3 col-sm-4 col-xs-12 movie-tile text-center" data-trailer-youtube-id="cuZaAOtQfp8" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Firebirdsposter.jpg/220px-Firebirdsposter.jpg">
+    <h3>Fire Birds (1990)</h3>
+    <p>Description: A joint task force operation between the Drug Enforcement Administration and the U.S. Army has been formed to dismantle one of the largest drug cartels operating in South America. Multiple attempts to assault the cartel's....<br />Running Time: 87 minutes.</p>
+</div>
+
+<div class="col-md-3 col-sm-4 col-xs-12 movie-tile text-center" data-trailer-youtube-id="pSIa0ofR-Bg" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/Guarding_Tess_1994.jpg/220px-Guarding_Tess_1994.jpg">
+    <h3>Guarding Tess (1994)</h3>
+    <p>Description: Doug Chesnic is a Secret Service agent who takes great pride in his job, performing his duties with the utmost professionalism. His assignment for the last three years has been a severe test of his patience. Doug is in charge of a team that has to meet the president's time line for....<br />Running Time: 95 minutes.</p>
+</div>
+
+<div class="col-md-3 col-sm-4 col-xs-12 movie-tile text-center" data-trailer-youtube-id="3zebJ_NoduE" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/FaceOff_%281997_film%29_poster.jpg/220px-FaceOff_%281997_film%29_poster.jpg">
+    <h3>Face/Off (1997)</h3>
+    <p>Description: FBI Special Agent Sean Archer has a personal vendetta against civil freelance terrorist Castor Troy who six years earlier killed Archer's son Michael while trying to assassinate Archer. Archer lays an ambush to capture Castor and his younger....<br />Running Time: 139 minutes.</p>
+</div>
+
+<div class="col-md-3 col-sm-4 col-xs-12 movie-tile text-center" data-trailer-youtube-id="fWq-S1_1vnc" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1d/Conairinternational.jpg/220px-Conairinternational.jpg">
+    <h3>Con Air (1997)</h3>
+    <p>Description: Former Army Ranger Cameron Poe is sentenced to prison for manslaughter for using excessive force on a drunk man while trying to protect his pregnant wife Tricia. Poe is paroled eight years later, and is to be released after being flown to Alabama....<br />Running Time: 115 minutes.</p>
+</div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================================================
+        End Movie Gallery  -->
+
+        <!-- Bootstrap LOCAL JavaScript ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="assets/js/jquery-1.10.2.min.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
+        <script src="assets/js/waypoints.min.js"></script>
+        <script src="assets/js/jquery.scrollto.min.js"></script>
+        <script src="assets/js/jquery.localscroll.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+
+  </body>
+</html>
