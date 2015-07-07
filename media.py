@@ -1,6 +1,9 @@
 import webbrowser
 
+
 class Video():
+    """ This class provides title, year, and duration attributes that \
+    can set up inheritance options further down the line """
 
     def __init__(self, movie_title, movie_year, movie_duration):
         self.title = movie_title
@@ -9,10 +12,11 @@ class Video():
 
 
 class Movie(Video):
-    """ This class provides a way to store movie related information"""
+    """ This class provides a way to store movie related information """
     VALID_RATINGS = ["G", "PG", "PG-13", "R"]
 
-    def __init__(self, movie_title, movie_year, movie_storyline, poster_image, trailer_youtube, movie_duration):
+    def __init__(self, movie_title, movie_year, movie_storyline, poster_image,
+                 trailer_youtube, movie_duration):
         self.title = movie_title
         self.year = movie_year
         self.storyline = movie_storyline
@@ -22,3 +26,4 @@ class Movie(Video):
 
     def show_trailer(self):
         webbrowser.open(self.trailer_youtube_url)
+
