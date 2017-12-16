@@ -1,12 +1,13 @@
-# P1-Movie-Trailer-Website
-Full Stack Web Developer Nanodegree - Project 1
+# Movie-Trailers
+Full Stack Web Development
 
 #### Make sure Python 2.7 is installed
 Documentation: https://www.python.org
 
-#### Clone this repository (located in the sidebar)
-$ git clone https://github.com/WilliamGarrow/P1-Movie-Trailer-Website.git
-
+#### Clone this repository
+```
+$ git clone <repo>
+```
 #### Execute/Run the Python file: entertainment_center.py
 
 A browser window will open and render the Nicolas Cage top 10 'Cagey' flicks of all time in glorious CSS animation. A click on a movie poster thumbnail will open the preview trailer in a modal. 
